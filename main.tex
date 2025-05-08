@@ -50,7 +50,8 @@
 \definecolor{h4}{HTML}{a48758}
 \definecolor{body}{HTML}{000000}
 
-\lstset{frame=tb,
+\lstset{
+  frame=tb,
   language=python,
   aboveskip=1mm,
   belowskip=1mm,
@@ -245,7 +246,7 @@
 
     \definition{CBTC}{Communications-Based Train Control}
 
-    \definition{CBRS}{Citizens Broadband Radio Service (150 MHz wide band of 3.5 GHz band)}
+    \definition{CBRS}{Citizens Broadband Radio Service (150 MHz wideband of 3.5 GHz band)}
 
     \definition{Cisco FM}{Cisco Fluidmesh}
 
@@ -331,7 +332,7 @@
 
   \definition{AREMA}{American Railway Engineering and Maintenance-of-Way Association}
 
-  \definition{CENELEC}{European Committee for Electrotechnical Standardization}
+  \definition{CENELEC}{European Committee for Electromechanical Standardization}
 
   \definition{IEEE}{Institute of Electrical and Electronics Engineers}
 
@@ -567,8 +568,6 @@
     \textbf{To send data, go from layer 7-1 (multiplexing) \& for receiving data, go from layer 1-7 (demultiplexing).}
   \end{multicols*}
 
-
-
   \section{General Information}
 
   \subsection{Computer Networks Usage}
@@ -665,17 +664,17 @@
   \begin{center}
     \begin{tabular}{| m{1.1cm} | m{3.7cm} |}
       \hline
-      \textbf{DDoS} & Attackers make resources (server, bandwidth) unavailable for legit traffic by overwhelming resource with bogus traffic. \\
+      \textbf{DDoS}            & Attackers make resources (server, bandwidth) unavailable for legit traffic by overwhelming resource with bogus traffic.                              \\
       \hline
-      \textbf{IP Spoofing} & Send packet with false source address. Allows for malicious actions without detection. \\
+      \textbf{IP Spoofing}     & Send packet with false source address. Allows for malicious actions without detection.                                                               \\
       \hline
       \textbf{Packet Sniffing} & A network monitoring technique where data packets transmitted across a network are capture and analyzed. A well known software is \textbf{Wireshark} \\
       \hline
-      \textbf{Spy Malware} & Records keystrokes, websites visited, upload info to collection site, etc. Can be enrolled in botnet. \\
+      \textbf{Spy Malware}     & Records keystrokes, websites visited, upload info to collection site, etc. Can be enrolled in botnet.                                                \\
       \hline
-      \textbf{Virus} & Self-replicating infection by \textbf{receiving/executing} object that gets itself executed. \\
+      \textbf{Virus}           & Self-replicating infection by \textbf{receiving/executing} object that gets itself executed.                                                         \\
       \hline
-      \textbf{Worm} & Self-replicating infection by \textbf{passively receiving} object that gets itself executed. \\
+      \textbf{Worm}            & Self-replicating infection by \textbf{passively receiving} object that gets itself executed.                                                         \\
       \hline
     \end{tabular}
   \end{center}
@@ -849,8 +848,6 @@
       \node[anchor=west, font=\tiny, align=center, text width=1.4cm] at (1.1,-2.4) {Response Message};
       \node[anchor=east, font=\tiny, align=center, text width=1.4cm] at (-1.1,-2.7) {Message Received, Close Connection};
 
-
-
       \node[anchor=north, font=\tiny, align=center, text width=1.5cm] at (0,-3.2) {time};
 
       \draw[|-|] (-1.1,-0.5) -- (-1.1, -1.1) node[midway, rotate=90, above] {RTT};
@@ -897,7 +894,7 @@
       \hline
       \textbf{PUT}     & Store a web page           \\
       \hline
-      \textbf{TRACE}   & Echo the incoming response\\
+      \textbf{TRACE}   & Echo the incoming response \\
       \hline
     \end{tabular}
   \end{center}
@@ -1007,7 +1004,7 @@
   \begin{center}
     \begin{tabular}{| m{0.8cm} | m{0.8cm} | m{1.0cm} | m{2cm} |}
       \hline
-      \textbf{Type} & \textbf{Type ID} & \textbf{Size} & \textbf{Description} \\
+      \textbf{Type}  & \textbf{Type ID} & \textbf{Size}             & \textbf{Description}      \\
       \hline
       \textbf{A}     & 1                & 32 bits                   & Web servers (IPv4)        \\
       \hline
@@ -1035,8 +1032,6 @@
   \end{enumerate}
 
   Note that a \textbf{type A} record for web servers and \textbf{MX} for mail servers need to be created. (https://www.internic.net)
-
-
 
   \begin{multicols}{2}
     \textbf{e.g. elitelu.com}
@@ -1227,13 +1222,13 @@
   \begin{center}
     \begin{tabular}{| m{0.7cm} | m{0.6cm} | m{3.5cm} |}
       \hline
-      \textbf{SYN}     & A → B     & Used to initiate and establish signal by sending a SYN packet.                                                                                            \\
+      \textbf{SYN}     & A → B       & Used to initiate and establish signal by sending a SYN packet.                                                                                                 \\
       \hline
-      \textbf{SYN-ACK} & A ← B     & The server responds with a SYN-ACK packet to the client if willing to accept the connection.                                                              \\
+      \textbf{SYN-ACK} & A ← B       & The server responds with a SYN-ACK packet to the client if willing to accept the connection.                                                                   \\
       \hline
-      \textbf{ACK}     & A → B     & The client sends an ACK packet back to the server, acknowledging that they received the SYN-ACK packet and completes the handshake. They can send messages now \\
+      \textbf{ACK}     & A → B       & The client sends an ACK packet back to the server, acknowledging that they received the SYN-ACK packet and completes the handshake. They can send messages now \\
       \hline
-      \textbf{FIN}     & A $\vert$ B & Terminates the connection.                                                                                                                                \\
+      \textbf{FIN}     & A $\vert$ B & Terminates the connection.                                                                                                                                     \\
       \hline
     \end{tabular}
   \end{center}
@@ -1326,8 +1321,6 @@
     \definition{UDP 67}{DHCP}
 
   \end{multicols*}
-
-
 
   \section{Network Layer}
 
@@ -1443,7 +1436,6 @@
 
     \end{tikzpicture}
   \end{center}
-
 
   \subsubsection{Routing Processor}
 
@@ -1579,19 +1571,19 @@
   \begin{center}
     \begin{tabular}{| m{2cm} | m{2.8cm} |}
       \hline
-      \textbf{Extension Header (In Order)} & \textbf{Description} \\
+      \textbf{Extension Header (In Order)} & \textbf{Description}                       \\
       \hline
-      Hop-by-hop options & Miscellaneous information for routers \\
+      Hop-by-hop options                   & Miscellaneous information for routers      \\
       \hline
-      Destination options & Additional information for the destination \\
+      Destination options                  & Additional information for the destination \\
       \hline
-      Routing & Loose list of routers to visit \\
+      Routing                              & Loose list of routers to visit             \\
       \hline
-      Fragmentation & Management of datagram fragments \\
+      Fragmentation                        & Management of datagram fragments           \\
       \hline
-      Authentication & Verification of the sender's identity \\
+      Authentication                       & Verification of the sender's identity      \\
       \hline
-      Encrypted security payload & Information about the encrypted contents \\
+      Encrypted security payload           & Information about the encrypted contents   \\
       \hline
     \end{tabular}
   \end{center}
@@ -1639,7 +1631,7 @@
   \begin{center}
     \begin{tabular}{| m{2.4cm} | m{2.4cm} |}
       \hline
-      \textbf{Same LAN} & \textbf{Different LAN} \\
+      \textbf{Same LAN} & \textbf{Different LAN}                                                            \\
       \hline
       \begin{enumerate}
         \item \textbf{A} broadcasts its ARP query packet, containing \textbf{B}'s IP address with a destination MAC address = FF-FF-FF-FF-FF-FF
@@ -1672,13 +1664,13 @@
   \begin{center}
     \begin{tabular}{| m{1.2cm} | m{3.6cm} |}
       \hline
-      \textbf{DHCPDISCOVER} & Host broadcasts the message (OPTIONAL). \\
+      \textbf{DHCPDISCOVER} & Host broadcasts the message (OPTIONAL).                                                                \\
       \hline
-      \textbf{DHCPOFFER} & DHCP server responds with message (OPTIONAL). \\
+      \textbf{DHCPOFFER}    & DHCP server responds with message (OPTIONAL).                                                          \\
       \hline
-      \textbf{DHCPREQUEST}  & Host requests IP address and receives a message. \\
+      \textbf{DHCPREQUEST}  & Host requests IP address and receives a message.                                                       \\
       \hline
-      \textbf{DHCPACK} & Sent by servers to acknowledge the DHCPREQUEST and to finalize the lease of an IP address to a client. \\
+      \textbf{DHCPACK}      & Sent by servers to acknowledge the DHCPREQUEST and to finalize the lease of an IP address to a client. \\
       \hline
     \end{tabular}
   \end{center}
@@ -1688,11 +1680,11 @@
   \begin{center}
     \begin{tabular}{| m{0.5cm} | m{4.3cm} |}
       \hline
-      \textbf{Bus} &
+      \textbf{Bus}  &
       \bul{All nodes are connected to single bidirectional communication line/cable called the trunk (backbone or segment)}
       \bul{Simple and low cost}
       \bul{One computer can send messages at a times}
-      \bul{Passive topology - computers only listen for, not regenerate data} \\
+      \bul{Passive topology - computers only listen for, not regenerate data}     \\
       \hline
       \textbf{Star} &
       \bul{Centers on one node where all the others are connected and through which messages are sent}
@@ -1705,7 +1697,7 @@
       \bul{Each computer serves as a repeater}
       \bul{Typical way to send data by token passing}
       \bul{Expensive and difficult to add computers}
-      \bul{If one computer fails, whole network fails} \\
+      \bul{If one computer fails, whole network fails}                            \\
       \hline
     \end{tabular}
   \end{center}
@@ -1764,8 +1756,8 @@
 
   \begin{itemize}
     \item When a link-layer protocol provides reliable delivery service, it guarantees to move each network-layer datagram across the link without error
-    \item Similar to a transport-layer reliable delivery service, a link-layer reliable delivery service can be achieved with acknowledgments and retransmissions
-    \item Similar to a transport-layer reliable delivery service, a link-layer reliable delivery service can be achieved with acknowledgments and retransmissions
+    \item Similar to a transport-layer reliable delivery service, a link-layer reliable delivery service can be achieved with acknowledgements and retransmissions
+    \item Similar to a transport-layer reliable delivery service, a link-layer reliable delivery service can be achieved with acknowledgements and retransmissions
     \item Many wired link-layer protocols do not provide a reliable delivery service
   \end{itemize}
 
@@ -1785,7 +1777,7 @@
   \begin{center}
     \begin{tabular}{| m{0.7cm} | m{4.1cm} |}
       \hline
-      \textbf{Switches} &
+      \textbf{Switches}                       &
       \bul{Full-duplex (Switching can be done without collisions)}
       \bul{Replaces hubs}
       \bul{Connects different devices on the same network and only intended nodes receives transmissions}
@@ -1899,40 +1891,40 @@
   \begin{center}
     \begin{tabular}{| m{1.3cm} | m{0.4cm} | m{3.1cm}|}
       \hline
-      \textbf{Part} & \textbf{Bytes} & \textbf{Information} \\
+      \textbf{Part}                     & \textbf{Bytes} & \textbf{Information} \\
       \hline
-      \textbf{Preamble} & 7 &
+      \textbf{Preamble}                 & 7              &
       \bul{Used to synchronize receiver}
       \bul{7 bytes of 10101010}
       \bul{Not part of the frame}
       \\
       \hline
-      \textbf{Starting Frame Delimiter} & 1 &
+      \textbf{Starting Frame Delimiter} & 1              &
       \bul{Indicates beginning of Ethernet frame}
       \bul{10101011}
       \bul{Not part of the frame}
       \\
       \hline
-      \textbf{MAC Destination} & 6 &
+      \textbf{MAC Destination}          & 6              &
       \bul{Address of device the packet is intended for}
       \bul{Adaptor passes data in frame to network layer if frame has matching destination address; otherwise thrown out}
       \\
       \hline
-      \textbf{MAC Source} & 6 &
+      \textbf{MAC Source}               & 6              &
       \bul{Address of device the packet originated for}
       \\
       \hline
-      \textbf{Payload (Data)} & 42-1500 &
+      \textbf{Payload (Data)}           & 42-1500        &
       \bul{Data to be sent}
       \\
       \hline
-      \textbf{EtherType (Type)} & 2 &
+      \textbf{EtherType (Type)}         & 2              &
       \bul{Used to indicate which protocol is encapsulated in the payload of the frame and used for receiving}
       \bul{Mostly IP but others possible like AppleTalk or Novell IPX}
       \bul{Used to demultiplex at receiver}
       \\
       \hline
-      \textbf{CRC} & 4 &
+      \textbf{CRC}                      & 4              &
       \bul{Checks redundancy at receiver}
       \bul{Thrown out if error detected}
       \\
@@ -1982,10 +1974,10 @@
   \begin{center}
     \begin{tabular}{| m{0.7cm} | m{4.1cm} |}
       \hline
-      \textbf{Hub} &
+      \textbf{Hub}      &
       \bul{Center of star network}
       \bul{All nodes receive transmitted packets}
-      \bul{Slow and insecure} \\
+      \bul{Slow and insecure}                                              \\
       \hline
       \textbf{Repeater} &
       \bul{Repeats signal since signals lose intensity due to energy loss} \\
@@ -2016,7 +2008,7 @@
     \subsection{Bandwidth-Limited Signals}
 
     \begin{itemize}
-      \item Having less bandwidth = losing some of the harmonics
+      \item Having less bandwidth = losing some harmonics
       \item Degrades the received signal
     \end{itemize}
 
@@ -2057,11 +2049,11 @@
       \hline
       \textbf{Half-duplex} &
       \bul{Bidirectional but not simultaneous transmission}
-      \bul{e.g. Senders taking turns} \\
+      \bul{e.g. Senders taking turns}                           \\
       \hline
-      \textbf{Simplex} &
+      \textbf{Simplex}     &
       \bul{Only one fixed direction at all times}
-      \bul{Not common} \\
+      \bul{Not common}                                          \\
       \hline
     \end{tabular}
   \end{center}
@@ -2082,7 +2074,7 @@
       \bul{Half-duplex and \textbf{UTP}}
       \bul{Has 4 twisted wire pairs}
       \bul{100Mbps Fast Ethernet uses two pairs, one for each direction}
-      \bul{1 Gbps Ethernet uses all four pairs in both directions simultaneously} \\
+      \bul{1 Gbps Ethernet uses all four pairs in both directions simultaneously}                                   \\
       \hline
       \textbf{Category 5e (CAT5e)} &
       \bul{Enhanced version of CAT5}
@@ -2092,12 +2084,12 @@
       \bul{Full-duplex and \textbf{UTP}}
       \bul{Compatible with CAT5}
       \bul{10 Gbps, thus faster}
-      \bul{More stringent (strict) specifications for crosstalk and system noise, up to 100 m.} \\
+      \bul{More stringent (strict) specifications for crosstalk and system noise, up to 100 m.}                     \\
       \hline
       \textbf{Category 7 (CAT7)}   &
       \bul{Full-duplex and \textbf{STP}}
       \bul{Backwards compatible}
-      \bul{Not recognized by TIA/EIA (Not as used)} \\
+      \bul{Not recognized by TIA/EIA (Not as used)}                                                                 \\
       \hline
     \end{tabular}
   \end{center}
@@ -2145,7 +2137,7 @@
   \begin{center}
     \begin{tabular}{| m{2.4cm} |  m{2.4cm}|}
       \hline
-      \textbf{Single-Mode} & \textbf{Multi-Mode} \\
+      \textbf{Single-Mode} & \textbf{Multi-Mode}              \\
       \hline
       \bul{Narrow core (10 \text{\textmu{}}m)}
       \bul{Light can not bounce}
@@ -2172,7 +2164,7 @@
   \begin{center}
     \begin{tabular}{| m{2.4cm} |  m{2.4cm}|}
       \hline
-      \textbf{Pros} & \textbf{Cons} \\
+      \textbf{Pros} & \textbf{Cons}                               \\
       \hline
       \bul{Easy and inexpensive to deploy}
       \bul{Naturally supports mobility and broadcast}
@@ -2192,7 +2184,6 @@
   \end{itemize}
 
   \begin{multicols}{3}
-
 
     \subsection{WAN}
 
@@ -2223,10 +2214,6 @@
     \end{itemize}
   \end{multicols}
 
-
-
-
-
   \subsection{Baseband Transmission}
 
   \begin{itemize}
@@ -2254,8 +2241,6 @@
     \end{itemize}
   \end{multicols}
 
-
-
   \subsubsection{Manchester Encoding}
 
   \begin{itemize}
@@ -2263,8 +2248,6 @@
     \item When the clock is XORed with 0, it makes a low-to-high transition (logical 0)
     \item When the clock is XORed with 1, it makes a high-to-low transition (logical 1)
   \end{itemize}
-
-
 
   \subsection{Passband Transmission}
 
@@ -2370,8 +2353,6 @@
     \end{tabular}
   \end{center}
 
-
-
   \section{Calculations}
 
   \subsection{One's Complement}
@@ -2383,10 +2364,7 @@
 
   e.g. 356-byte segment has a sequence number field of 2512. ($356 + 2512 = 2868$ is the Acknowledgement)
 
-
-
   \textbf{Next sequence number would be the acknowledgement number!}
-
 
   \subsection{UDP Packet Checksum}
 
@@ -2490,7 +2468,6 @@
 
   \begin{center}
     \begin{tabular}{| m{0.5cm} | m{4.3cm} |}
-
     \end{tabular}
   \end{center}
 
@@ -2540,7 +2517,6 @@
 
 \end{center}
 
-
 \textbf{Use for speed and when some data loss is acceptable.}
 
 \begin{itemize}
@@ -2552,73 +2528,70 @@
 
 \subsection{TCP Socket Programming}
 
-\begin{multicols}{2}
-  \begin{center}
-    \begin{tikzpicture}[
-        node distance=4cm,
-        stage/.style={},
-        arrow/.style={-Stealth, thick},
-        data/.style={midway, above, font=\small}
-      ]
+\begin{center}
+  \begin{tikzpicture}[
+      node distance=4cm,
+      stage/.style={},
+      arrow/.style={-Stealth, thick},
+      data/.style={midway, above, font=\small}
+    ]
 
-      % Nodes
-      \node[stage] (client) {TCP Client};
-      \node[stage, above right=1.125cm and 0.6cm of client] (server) {TCP Server};
+    % Nodes
+    \node[stage] (client) {TCP Client};
+    \node[stage, above right=1.125cm and 0.6cm of client] (server) {TCP Server};
 
-      % Client steps
-      \node[below=0.125cm of client] (clientSocket) {\texttt{socket()}};
-      \node[below=0.5cm of clientSocket] (clientConnect) {\texttt{connect()}};
-      \node[below=0.5cm of clientConnect] (clientWrite) {\texttt{write()}};
-      \node[below=0.5cm of clientWrite] (clientRead) {\texttt{read()}};
-      \node[below=0.5cm of clientRead] (clientClose) {\texttt{close()}};
+    % Client steps
+    \node[below=0.125cm of client] (clientSocket) {\texttt{socket()}};
+    \node[below=0.5cm of clientSocket] (clientConnect) {\texttt{connect()}};
+    \node[below=0.5cm of clientConnect] (clientWrite) {\texttt{write()}};
+    \node[below=0.5cm of clientWrite] (clientRead) {\texttt{read()}};
+    \node[below=0.5cm of clientRead] (clientClose) {\texttt{close()}};
 
-      \draw[->] (clientSocket) -- (clientConnect);
-      \draw[->] (clientConnect) -- (clientWrite);
-      \draw[->] (clientWrite) to[bend left=20] (clientRead);
-      \draw[->] (clientRead) to[bend left=20] (clientWrite);
-      \draw[->] (clientRead) -- (clientClose);
+    \draw[->] (clientSocket) -- (clientConnect);
+    \draw[->] (clientConnect) -- (clientWrite);
+    \draw[->] (clientWrite) to[bend left=20] (clientRead);
+    \draw[->] (clientRead) to[bend left=20] (clientWrite);
+    \draw[->] (clientRead) -- (clientClose);
 
-      % Server steps
-      \node[below=0.125cm of server] (serverSocket) {\texttt{socket()}};
-      \node[below=0.5cm of serverSocket] (serverBind) {\texttt{bind()}};
-      \node[below=0.5cm of serverBind] (serverListen) {\texttt{listen()}};
-      \node[below=0.5cm of serverListen] (serverAccept) {\texttt{accept()}};
-      \node[below=0.75cm of serverAccept] (serverRead1) {\texttt{read()}};
-      \node[below=0.5cm of serverRead1] (serverWrite) {\texttt{write()}};
-      \node[below=0.25cm of serverWrite] (serverRead2) {\texttt{read()}};
-      \node[below=0.25cm of serverRead2] (serverClose) {\texttt{close()}};
+    % Server steps
+    \node[below=0.125cm of server] (serverSocket) {\texttt{socket()}};
+    \node[below=0.5cm of serverSocket] (serverBind) {\texttt{bind()}};
+    \node[below=0.5cm of serverBind] (serverListen) {\texttt{listen()}};
+    \node[below=0.5cm of serverListen] (serverAccept) {\texttt{accept()}};
+    \node[below=0.75cm of serverAccept] (serverRead1) {\texttt{read()}};
+    \node[below=0.5cm of serverRead1] (serverWrite) {\texttt{write()}};
+    \node[below=0.25cm of serverWrite] (serverRead2) {\texttt{read()}};
+    \node[below=0.25cm of serverRead2] (serverClose) {\texttt{close()}};
 
-      \draw[->] (serverSocket) -- (serverBind);
-      \draw[->] (serverBind) -- (serverListen);
-      \draw[->] (serverListen) -- (serverAccept);
+    \draw[->] (serverSocket) -- (serverBind);
+    \draw[->] (serverBind) -- (serverListen);
+    \draw[->] (serverListen) -- (serverAccept);
 
-      \draw[->] (serverRead1) to [bend left=20] (serverWrite);
-      \draw[->] (serverWrite) to[bend left=20] (serverRead1);
-      \draw[->] (serverWrite) --(serverRead2);
-      \draw[->] (serverRead2) -- (serverClose);
+    \draw[->] (serverRead1) to [bend left=20] (serverWrite);
+    \draw[->] (serverWrite) to[bend left=20] (serverRead1);
+    \draw[->] (serverWrite) --(serverRead2);
+    \draw[->] (serverRead2) -- (serverClose);
 
-      \draw[->] (serverAccept) -- node[right, text width=1cm, align = center, yshift=2mm, scale=0.75] (BtoC) {Blocks until client connected} (serverRead1);
+    \draw[->] (serverAccept) -- node[right, text width=1cm, align = center, yshift=2mm, scale=0.75] (BtoC) {Blocks until client connected} (serverRead1);
 
-      \draw[<->] (clientConnect) -- node[sloped, above, scale=0.75] {TCP Connection} ([yshift=-3mm, xshift=-2mm] BtoC.west);
+    \draw[<->] (clientConnect) -- node[sloped, above, scale=0.75] {TCP Connection} ([yshift=-3mm, xshift=-2mm] BtoC.west);
 
-      \draw[->] (clientWrite) -- node[sloped, anchor=center, above, scale=0.75] {data (request)} (serverRead1);
-      \draw[->] (serverWrite) -- node[sloped, anchor=center, above, scale=0.75] {data (reply)} (clientRead);
-      \draw[-] (serverRead2) -- node[sloped, anchor=center, above, scale=0.75] {EOF Notification} (clientClose);
+    \draw[->] (clientWrite) -- node[sloped, anchor=center, above, scale=0.75] {data (request)} (serverRead1);
+    \draw[->] (serverWrite) -- node[sloped, anchor=center, above, scale=0.75] {data (reply)} (clientRead);
+    \draw[-] (serverRead2) -- node[sloped, anchor=center, above, scale=0.75] {EOF Notification} (clientClose);
 
-    \end{tikzpicture}
+  \end{tikzpicture}
 
-  \end{center}
+\end{center}
 
-  \textbf{Use for reliable, ordered data transfer when accuracy is crucial.}
+\textbf{Use for reliable, ordered data transfer when accuracy is crucial.}
 
-  \begin{itemize}
-    \item Client must connect to the server first
-    \item Server process must first be running and have created a socket that welcomes the client's contact
-    \item Client connects to the server by creating a TCP socket, specifying the IP address and port \# of a server process
-    \item Server TCP creates a new socket for the server process, which allows the server to talk to multiple clients (use port \# to distinguish)
-  \end{itemize}
-
-\end{multicols}
+\begin{itemize}
+  \item Client must connect to the server first
+  \item Server process must first be running and have created a socket that welcomes the client's contact
+  \item Client connects to the server by creating a TCP socket, specifying the IP address and port \# of a server process
+  \item Server TCP creates a new socket for the server process, which allows the server to talk to multiple clients (use port \# to distinguish)
+\end{itemize}
 
 \end{multicols*}
 
@@ -2677,11 +2650,10 @@
     \hline
     \textbf{Raemis EPC} & Supports \textbf{4G} and \textbf{5G} non-standalone deployments. \\
     \hline
-    \textbf{Raemis 5GC} & Designed specifically for \textbf{5G SA} deployments. \\
+    \textbf{Raemis 5GC} & Designed specifically for \textbf{5G SA} deployments.            \\
     \hline
   \end{tabular}
 \end{center}
-
 
 \begin{center}
   \vspace{0.4cm}
@@ -2702,7 +2674,6 @@
 
     \node[align=center, text width=1cm, draw, rounded corners,  minimum width=1cm, minimum height=0.5cm] (hss) at (0, 3.25) {HSS};
 
-
     % Raemis EPC
     \node[align=center, text width=1cm, draw, rounded corners, minimum width=3cm, minimum height=2cm, inner ysep=5pt] (epc) at (0, 1.75) {};
 
@@ -2715,8 +2686,6 @@
     \node[align=center, text width=1cm, draw, rounded corners,  minimum width=1cm, minimum height=0.5cm] (pcrf) at (0.75, 2) {PCRF};
 
     \node[align=center, text width=1cm, draw, rounded corners,  minimum width=1cm, minimum height=0.5cm] (pgwcp) at (0.75, 1.25) {PGW-CP};
-
-
 
     % Raemis 5GC
     \node[align=center, text width=1cm, draw, rounded corners, minimum width=3cm, minimum height=3cm, inner ysep=5pt] (5gc) at (0, -2.25) {};
@@ -2780,7 +2749,6 @@
 \begin{itemize}
   \item Raemis UPF implements the standard N3
 \end{itemize}
-
 
 \subsubsection{PDN Functions}
 
@@ -2922,15 +2890,11 @@
 
     \node[below = 0.1cm of jobs, font=\bfseries, align=center, text width=1.25cm] {Prometheus Targets};
 
-
-
     \node[above = 0.5cm of pushgateway, align=center, text width=1.5cm] (pushmetrics) {Push Metrics at Exit};
 
     \node[above = 1cm of pushgateway, align=center, text width=1.25cm, draw, rounded corners] (shortjobs) {Short-Lived Jobs};
 
     \node[align=center, text width=1cm, draw, rounded corners] at (-2, -2.5) (alertmanager) {Alertmanager};
-
-
 
     \node[below left = 0.25cm and 0.25cm of alertmanager, align=center, text width=1cm, draw, rounded corners](pagerduty) {pagerduty};
 
@@ -3002,11 +2966,11 @@
 \begin{center}
   \begin{tabular}{| m{2cm} | m{6cm} |}
     \hline
-    \textbf{2oo2} & Requires both signals to agree to trigger a shutdown.\\
+    \textbf{2oo2} & Requires both signals to agree to trigger a shutdown.    \\
     \hline
-    \textbf{2oo3} & Requires two out of three signals to trigger a shutdown.\\
+    \textbf{2oo3} & Requires two out of three signals to trigger a shutdown. \\
     \hline
-    \textbf{3oo3} & Requires all three signals to trigger a shutdown.\\
+    \textbf{3oo3} & Requires all three signals to trigger a shutdown.        \\
     \hline
   \end{tabular}
 \end{center}
