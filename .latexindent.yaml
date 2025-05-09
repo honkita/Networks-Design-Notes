@@ -1,0 +1,23 @@
+# Number of spaces per indentation level
+indent: '   '  # ← exactly three spaces (not a tab, not 2 or 4)
+
+# Optional: control which environments to indent
+indentRules:
+  section: true
+  subsection: true
+  subsubsection: true
+  paragraph: true
+  subparagraph: true
+
+# Optional: ensure code blocks inside environments are also indented
+modifyLineBreaks:
+  environments:
+    itemize:
+      begin: 1
+      end: 1
+    enumerate:
+      begin: 1
+      end: 1
+    tabular:
+      begin: 1
+      end: 1

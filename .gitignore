@@ -3,3 +3,5 @@
 /main.out
 /main.synctex.gz
 /indent.log
+/.prettierrc
+/.editorconfig
