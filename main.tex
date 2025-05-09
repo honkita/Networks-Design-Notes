@@ -2627,9 +2627,9 @@
   \begin{center}
     \begin{tabular}{| m{1cm} | m{1cm} | m{6cm} |}
       \hline
-      \textbf{S1-U}   & \textbf{eNB} \& \textbf{UPF} & Routes and forwards user data packets. Replaced by \textbf{N3}                                                \\
+      \textbf{S1-U}   & \textbf{eNB} \& \textbf{UPF} & Routes and forwards user data packets. Replaced by \textbf{N3}                                              \\
       \hline
-      \textbf{S1-MME} & \textbf{eNB} \& \textbf{MME} & Facilitates control plane signaling, including mobility management, session management, and authentification. \\
+      \textbf{S1-MME} & \textbf{eNB} \& \textbf{MME} & Facilitates control plane signaling, including mobility management, session management, and authentication. \\
       \hline
     \end{tabular}
   \end{center}
@@ -2647,11 +2647,100 @@
       \hline
       \textbf{N4} & \textbf{SMF} \& \textbf{UPF}   & Responsible for session management and data flow control.                 \\
       \hline
-      \textbf{N5} & \textbf{PCF} \& \textbf{AF}    & Handles policy enforcement and authentification.                          \\
+      \textbf{N5} & \textbf{PCF} \& \textbf{AF}    & Handles policy enforcement and authentication.                            \\
       \hline
       \textbf{N6} & \textbf{UPF} \& \textbf{DN}    & Responsible for transferring user data to and from external networks.     \\
       \hline
     \end{tabular}
+  \end{center}
+  
+  \begin{center}
+    \vspace{0.4cm}
+    \begin{tikzpicture}[
+        node distance=4cm,
+        stage/.style={scale=0.75},
+        every arrow/.style={thick,>=stealth},
+        data/.style={midway, above, font=\small}
+      ]
+      
+      % Nodes
+      
+      % Row 1
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-2.5, 2) (nef) {NEF};
+      
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-1.5, 2) (nrf) {NRF};
+      
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (0.5, 2) (udm) {UDM};
+      
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, 2) (af) {AF};
+      
+      % Row 1.5
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-1.5, 1) (nssf) {NSSF};
+      
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (0.5, 1) (smsf) {SMSF};
+      
+      \node[align=center] at (0.5, 1.5) (n21) {N21};
+      \draw[-] (udm) -- (n21) -- (smsf);
+      
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, 1) (pcf) {PCF};
+      
+      \node[align=center] at (1.5, 1.5) (n5) {N5};
+      \draw[-] (af) -- (n5) -- (pcf);
+      
+      % Row 2
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-2.5, 0) (ausf) {AUSF};
+      
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-0.5, 0) (amf) {AMF};
+      
+      \node[align=center] at (-1, 0.5) (n22) {N22};
+      \draw[-] (nssf) -- (n22) -- (amf);
+      
+      \node[align=center] at (0, 0.5) (n20) {N20};
+      \draw[-] (smsf) -- (n20) -- (amf);
+      
+      \node[align=center] at (-1.5, 0) (n12) {N12};
+      \draw[-] (ausf) -- (n12) -- (amf);
+      
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, 0) (smf) {SMF};
+      
+      \node[align=center] at (0.5, 0) (n11) {N11};
+      \draw[-] (amf) -- (n11) -- (smf);
+      
+      % Row 2.5
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, -1) (upf) {UPF};
+      
+      \node[align=center] at (1.5, -0.5) (n4) {N4};
+      \draw[-] (smf) -- (n4) -- (upf);
+      
+      % Row 3
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-2.5, -2) (ue) {UE};
+      
+      \node[align=center] at (-1.75, -1) (n1) {N1};
+      \draw[-] ([xshift=-0.25cm]ue.north) -- (n1) -- ([xshift=-0.25cm]amf.south);
+      
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-0.5, -2) (ran) {(R)AN};
+      
+      \node[align=center] at (-0.5, -1) (n2) {N2};
+      \draw[-] (amf) -- (n2) -- (ran);
+      
+      \draw[-] (ue) -- (ran);
+      
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, -2) (dn) {DN};
+      
+      \node[align=center] at (0.5, -1.5) (n3) {N3};
+      \draw[-] (upf) -- (n3) -- (ran);
+      
+      \node[align=center] at (1.5, -1.5) (n6) {N6};
+      \draw[-] (upf) -- (n6) -- (dn);
+      
+      
+      % Arrows
+      
+      % \node[align=center] (CUPS) at (0.1, 0.5) {Raemis CUPS};
+      % \draw[-] (dataplane.north) -- ([xshift=-2.5mm]sgwcp.south);
+      
+      
+    \end{tikzpicture}
   \end{center}
   
   \section{Applications \& Tech}
