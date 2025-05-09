@@ -1,6 +1,5 @@
 # Number of spaces per indentation level
-indent: '   '  # ← exactly three spaces (not a tab, not 2 or 4)
-
+indent: '   '
 # Optional: control which environments to indent
 indentRules:
   section: true
@@ -8,7 +7,7 @@ indentRules:
   subsubsection: true
   paragraph: true
   subparagraph: true
-
+  
 # Optional: ensure code blocks inside environments are also indented
 modifyLineBreaks:
   environments:
