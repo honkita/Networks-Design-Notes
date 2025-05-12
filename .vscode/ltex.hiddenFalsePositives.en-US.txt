@@ -8,3 +8,4 @@
 {"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qkubernetes Open-source system that automates the deployment, scaling, and management of containerized applications.\\E$"}
 {"rule":"R_SYMBOL","sentence":"^\\QN3 (R)AN & UPF Facilitates transfer of user data between RAN and core network.\\E$"}
 {"rule":"R_SYMBOL","sentence":"^\\QN2 (R)AN & AMF Carries signaling and data between the RAN and the core network.\\E$"}
+{"rule":"PHRASE_REPETITION","sentence":"^\\QUploading forms can be done via POST method or URL method URL Method Used GET method Inputs are uploaded in the URL fields of the request line, separated with a '?' from the main URL and '&' between inputs POST Method CONNECT Connect through a proxy DELETE Remove a web page GET Read a web page HEAD Read a web page's header OPTIONS Query options for a page PUT Store a web page TRACE Echo the incoming response Response.\\E$"}

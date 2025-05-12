@@ -374,6 +374,8 @@
     
     \definition{5GC}{5G Core Network}
     
+    \definition{5GS}{5G System}
+    
     \definition{AMF}{Access and Mobility Management Function}
     
     \definition{DN}{Data Network}
@@ -381,6 +383,8 @@
     \definition{G}{Generation (Used in Cellular)}
     
     \definition{eNB}{Evolved NodeB (LTE Radio Base Station)}
+    
+    \definition{EPC}{Evolved Packet Core (4G/LTE)}
     
     \definition{gNB}{Next Generation Node B (5G NR Radio Base Station)}
     
@@ -2485,38 +2489,41 @@
       ]
       
       % Client steps
-      \node[font=\bfseries, align=center, text width = 1cm] (client) at (-2, -0.5) {UDP Client};
-      \node[align=center, text width=1cm, draw, rounded corners] (clientSocket) at (-2, -1) {socket()};
-      \node[align=center, text width=1cm, draw, rounded corners] (clientSend) at (-2, -3.5) {sendto()};
-      \node[align=center, text width=1cm, draw, rounded corners] (clientReceive) at (-2, -4.5) {recvfrom()};
-      \node[align=center, text width=1cm, draw, rounded corners] (clientClose) at (-2, -5.5) {close()};
+      \draw[rounded corners, dashed] (-1, -4.25) rectangle (-2.5, 1.75);
+      \node[font=\bfseries, align=center, text width = 1cm] (client) at (-1.75, 1.5) {UDP Client};
+      \node[align=center, text width=1cm, draw, rounded corners] (clientSocket) at (-1.75, 1) {socket()};
+      \node[align=center, text width=1cm, draw, rounded corners] (clientSend) at (-1.75, -2) {sendto()};
+      \node[align=center, text width=1cm, draw, rounded corners] (clientReceive) at (-1.75, -3) {recvfrom()};
+      \node[align=center, text width=1cm, draw, rounded corners] (clientClose) at (-1.75, -4) {close()};
       
       \draw[->] (clientSocket) -- (clientSend);
-      \draw[->] ([xshift=0.25cm]clientSend.south) -- ([xshift=0.25cm]clientReceive.north);
-      \draw[->] ([xshift=-0.25cm]clientReceive.north) -- ([xshift=-0.25cm]clientSend.south);
+      \draw[->] ([xshift=-0.25cm]clientSend.south) -- ([xshift=-0.25cm]clientReceive.north);
+      \draw[->] ([xshift=0.25cm]clientReceive.north) -- ([xshift=0.25cm]clientSend.south);
       \draw[->] (clientReceive) -- (clientClose);
       
       % Server steps
-      \node[font=\bfseries, align=center] (server) at (2, 1.5) {UDP Server};
-      \node[align=center, text width=1cm, draw, rounded corners] (serverSocket) at (2, 1){socket()};
-      \node[align=center, text width=1cm, draw, rounded corners] (serverBind) at (2, -0.5){bind()};
-      \node[align=center, text width=1cm, draw, rounded corners] (serverReceive) at (2, -2){recvfrom()};
-      \node[align=center, text width=1cm, draw, rounded corners] (serverSend) at (2, -4.5){sendTo()};
+      \draw[rounded corners, dashed] (1, -4.25) rectangle (2.5, 1.75);
+      \node[font=\bfseries, align=center] (server) at (1.75, 1.5) {UDP Server};
+      \node[align=center, text width=1cm, draw, rounded corners] (serverSocket) at (1.75, 1){socket()};
+      \node[align=center, text width=1cm, draw, rounded corners] (serverBind) at (1.75, 0){bind()};
+      \node[align=center, text width=1cm, draw, rounded corners] (serverReceive) at (1.75, -1){recvfrom()};
+      \node[align=center, text width=1cm, draw, rounded corners] (serverSend) at (1.75, -3){sendTo()};
       
       % Arrows
       \draw[->] (serverSocket) -- (serverBind);
       \draw[->] (serverBind) -- (serverReceive);
       
-      \node[align=center, text width=1cm, draw, rounded corners] (block) at (1.5, -3.5) {Block until datagram received};
+      \node[align=center, text width=0.75cm, draw, rounded corners] (block) at (1.5, -2) {Block until datagram received};
       
       \draw[->] ([xshift=0.25cm]serverSend.north) -- ([xshift=0.25cm]serverReceive.south);
       
-      \node[align=center] (datareq) at (0, -3.5){data(request)};
+      \node[align=center] (datareq) at (0, -2){data(request)};
       \draw[->] (clientSend) -- (datareq) -- (block);
-      \draw[-] ([xshift=-0.25cm]serverReceive.south) -- ([xshift=0.25cm]block.north);
-      \draw[->] ([xshift=0.25cm]block.south) -- ([xshift=-0.25cm]serverSend.north);
+      \draw[-] ([xshift=-0.25cm]serverReceive.south) -- (block);
+      \draw[->] (block) -- ([xshift=-0.25cm]serverSend.north);
       
-      \draw[->] (serverSend) -- node[sloped, below] {data (reply))} ([yshift=-4mm]clientReceive);
+      \node[align=center] (datarep) at (0, -3){data(reply)};
+      \draw[->] (serverSend) -- (datarep) -- (clientReceive);
     \end{tikzpicture}
     
   \end{center}
@@ -2541,48 +2548,60 @@
       ]
       
       % Nodes
-      \node[stage] (client) {TCP Client};
-      \node[stage, above right=1.125cm and 0.6cm of client] (server) {TCP Server};
       
       % Client steps
-      \node[below=0.125cm of client] (clientSocket) {\texttt{socket()}};
-      \node[below=0.5cm of clientSocket] (clientConnect) {\texttt{connect()}};
-      \node[below=0.5cm of clientConnect] (clientWrite) {\texttt{write()}};
-      \node[below=0.5cm of clientWrite] (clientRead) {\texttt{read()}};
-      \node[below=0.5cm of clientRead] (clientClose) {\texttt{close()}};
+      
+      \draw[rounded corners, dashed] (-1, -7.25) rectangle (-2.5, 1.75);
+      \node[font=\bfseries, align=center, text width = 1cm] (client) at (-1.75, 1.5) {TCP Client};
+      
+      \node[align=center, text width=1cm, draw, rounded corners] (clientSocket) at (-1.75, 1) {socket()};
+      \node[align=center, text width=1cm, draw, rounded corners] (clientConnect) at (-1.75, -3) {connect()};
+      \node[align=center, text width=1cm, draw, rounded corners] (clientWrite) at (-1.75, -4) {write()};
+      \node[align=center, text width=1cm, draw, rounded corners] (clientRead) at (-1.75, -5) {read()};
+      \node[align=center, text width=1cm, draw, rounded corners] (clientClose) at (-1.75, -6) {close()};
       
       \draw[->] (clientSocket) -- (clientConnect);
       \draw[->] (clientConnect) -- (clientWrite);
-      \draw[->] (clientWrite) to[bend left=20] (clientRead);
-      \draw[->] (clientRead) to[bend left=20] (clientWrite);
+      \draw[->] ([xshift=-0.25cm]clientWrite.south) -- ([xshift=-0.25cm]clientRead.north);
+      \draw[->] ([xshift=0.25cm]clientRead.north) -- ([xshift=0.25cm]clientWrite.south);
       \draw[->] (clientRead) -- (clientClose);
       
       % Server steps
-      \node[below=0.125cm of server] (serverSocket) {\texttt{socket()}};
-      \node[below=0.5cm of serverSocket] (serverBind) {\texttt{bind()}};
-      \node[below=0.5cm of serverBind] (serverListen) {\texttt{listen()}};
-      \node[below=0.5cm of serverListen] (serverAccept) {\texttt{accept()}};
-      \node[below=0.75cm of serverAccept] (serverRead1) {\texttt{read()}};
-      \node[below=0.5cm of serverRead1] (serverWrite) {\texttt{write()}};
-      \node[below=0.25cm of serverWrite] (serverRead2) {\texttt{read()}};
-      \node[below=0.25cm of serverRead2] (serverClose) {\texttt{close()}};
+      \draw[rounded corners, dashed] (1, -7.25) rectangle (2.5, 1.75);
+      \node[font=\bfseries, align=center, text width = 1cm] (server) at (1.75, 1.5) {TCP Server};
+      \node[align=center, text width=1cm, draw, rounded corners] (serverSocket) at (1.75, 1) {socket()};
+      \node[align=center, text width=1cm, draw, rounded corners] (serverBind) at (1.75, 0) {bind()};
+      \node[align=center, text width=1cm, draw, rounded corners] (serverListen) at (1.75, -1) {listen()};
+      \node[align=center, text width=1cm, draw, rounded corners] (serverAccept) at (1.75, -2) {accept()};
+      \node[align=center, text width=1cm, draw, rounded corners] (block) at (1.75, -3) {Blocks until client connected};
+      \node[align=center, text width=1cm, draw, rounded corners] (serverRead1) at (1.75, -4) {read()};
+      \node[align=center, text width=1cm, draw, rounded corners] (serverWrite) at (1.75, -5) {write()};
+      \node[align=center, text width=1cm, draw, rounded corners] (serverRead2) at (1.75, -6) {read()};
+      \node[align=center, text width=1cm, draw, rounded corners] (serverClose) at (1.75, -7) {close()};
       
       \draw[->] (serverSocket) -- (serverBind);
       \draw[->] (serverBind) -- (serverListen);
       \draw[->] (serverListen) -- (serverAccept);
-      
-      \draw[->] (serverRead1) to [bend left=20] (serverWrite);
-      \draw[->] (serverWrite) to[bend left=20] (serverRead1);
+      \draw[->] ([xshift=-0.25cm]serverRead1.south) -- ([xshift=-0.25cm]serverWrite.north);
+      \draw[->] ([xshift=0.25cm]serverWrite.north) -- ([xshift=0.25cm]serverRead1.south);
       \draw[->] (serverWrite) --(serverRead2);
       \draw[->] (serverRead2) -- (serverClose);
       
-      \draw[->] (serverAccept) -- node[right, text width=1cm, align = center, yshift=2mm, scale=0.75] (BtoC) {Blocks until client connected} (serverRead1);
+      \draw[->] (serverAccept) -- (block) --(serverRead1);
       
-      \draw[<->] (clientConnect) -- node[sloped, above, scale=0.75] {TCP Connection} ([yshift=-3mm, xshift=-2mm] BtoC.west);
+      \node[align=center] (tcpconnection) at (0, -3) {TCP Connection};
       
-      \draw[->] (clientWrite) -- node[sloped, anchor=center, above, scale=0.75] {data (request)} (serverRead1);
-      \draw[->] (serverWrite) -- node[sloped, anchor=center, above, scale=0.75] {data (reply)} (clientRead);
-      \draw[-] (serverRead2) -- node[sloped, anchor=center, above, scale=0.75] {EOF Notification} (clientClose);
+      \draw[->] (tcpconnection) -- (block);
+      \draw[->] (tcpconnection) -- (clientConnect);
+      
+      \node[align=center] (datareq) at (0, -4) {data(request)};
+      \draw[->] (clientWrite) -- (datareq) -- (serverRead1);
+      
+      \node[align=center] (datarep) at (0, -5) {data(reply)};
+      \draw[->] (serverWrite) -- (datarep) -- (clientRead);
+      
+      \node[align=center] (eof) at (0, -6) {EOF Notification};
+      \draw[->] (serverRead2) -- (eof) -- (clientClose);
       
     \end{tikzpicture}
     
@@ -2639,17 +2658,21 @@
   \begin{center}
     \begin{tabular}{| m{1cm} | m{1cm} | m{6cm} |}
       \hline
-      \textbf{N1} & \textbf{UE} \& \textbf{AMF}    & Handles registration, authentication, and mobility management procedures. \\
+      \textbf{N1}  & \textbf{UE} \& \textbf{AMF}    & Handles registration, authentication, and mobility management procedures. \\
       \hline
-      \textbf{N2} & \textbf{(R)AN} \& \textbf{AMF} & Carries signaling and data between the \textbf{RAN} and the core network. \\
+      \textbf{N2}  & \textbf{(R)AN} \& \textbf{AMF} & Carries signaling and data between the \textbf{RAN} and the core network. \\
       \hline
-      \textbf{N3} & \textbf{(R)AN} \& \textbf{UPF} & Facilitates transfer of user data between \textbf{RAN} and core network.  \\
+      \textbf{N3}  & \textbf{(R)AN} \& \textbf{UPF} & Facilitates transfer of user data between \textbf{RAN} and core network.  \\
       \hline
-      \textbf{N4} & \textbf{SMF} \& \textbf{UPF}   & Responsible for session management and data flow control.                 \\
+      \textbf{N4}  & \textbf{SMF} \& \textbf{UPF}   & Responsible for session management and data flow control.                 \\
       \hline
-      \textbf{N5} & \textbf{PCF} \& \textbf{AF}    & Handles policy enforcement and authentication.                            \\
+      \textbf{N5}  & \textbf{PCF} \& \textbf{AF}    & Handles policy enforcement and authentication.                            \\
       \hline
-      \textbf{N6} & \textbf{UPF} \& \textbf{DN}    & Responsible for transferring user data to and from external networks.     \\
+      \textbf{N6}  & \textbf{UPF} \& \textbf{DN}    & Responsible for transferring user data to and from external networks.     \\
+      \hline
+      \textbf{N7}  & \textbf{PCF} \& \textbf{SMF}   & Triggers session management policies.                                     \\
+      \hline
+      \textbf{N26} & \textbf{MME} \& \textbf{AMF}   & Crucial for facilitating communication between 4G/LTE EPC and 5GS         \\
       \hline
     \end{tabular}
   \end{center}
@@ -2670,58 +2693,92 @@
       
       \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-1.5, 2) (nrf) {NRF};
       
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (0.5, 2) (udm) {UDM};
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-0.5, 2) (udm) {UDM};
       
       \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, 2) (af) {AF};
       
-      % Row 1.5
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-1.5, 1) (nssf) {NSSF};
+      % Row 2
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-2.5, 1) (nssf) {NSSF};
       
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (0.5, 1) (smsf) {SMSF};
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-1.5, 1) (smsf) {SMSF};
       
-      \node[align=center] at (0.5, 1.5) (n21) {N21};
+      \node[align=center] at (-1, 1.5) (n21) {N21};
       \draw[-] (udm) -- (n21) -- (smsf);
+      
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (0.5, 1) (nssaaf) {NSSAAF};
+      
+      \node[align=center] at (0, 1.5) (n59) {N59};
+      \draw[-] (udm) -- (n59) -- (nssaaf);
       
       \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, 1) (pcf) {PCF};
       
       \node[align=center] at (1.5, 1.5) (n5) {N5};
       \draw[-] (af) -- (n5) -- (pcf);
       
-      % Row 2
+      % Row 3
       \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-2.5, 0) (ausf) {AUSF};
+      
+      \node[align=center] at (-3.5, 2.5) (n13) {N13};
+      \draw[-] (ausf) -| (n13) -| ([xshift=-0.25cm]udm.north);
       
       \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-0.5, 0) (amf) {AMF};
       
-      \node[align=center] at (-1, 0.5) (n22) {N22};
+      \node[align=center] at (0, -0.5) (n14) {N14};
+      \draw[-] (amf) -- (n14);
+      
+      \node[align=center] at (-1.5, 0.5) (n22) {N22};
       \draw[-] (nssf) -- (n22) -- (amf);
       
-      \node[align=center] at (0, 0.5) (n20) {N20};
+      \node[align=center] at (-1, 0.5) (n20) {N20};
       \draw[-] (smsf) -- (n20) -- (amf);
+      
+      \node[align=center] at (-0.5, 1) (n8) {N8};
+      \draw[-] (udm) -- (n8) -- (amf);
       
       \node[align=center] at (-1.5, 0) (n12) {N12};
       \draw[-] (ausf) -- (n12) -- (amf);
       
+      \node[align=center] at (0, 0.5) (n58) {N58};
+      \draw[-] (amf) -- (n58) -- (nssaaf);
+      
       \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, 0) (smf) {SMF};
+      
+      \node[align=center] at (1.5, 0.5) (n7) {N7};
+      \draw[-] (smf) -- (n7) -- (pcf);
       
       \node[align=center] at (0.5, 0) (n11) {N11};
       \draw[-] (amf) -- (n11) -- (smf);
       
-      % Row 2.5
+      \node[align=center] at (2.5, 2.5) (n10) {N10};
+      \draw[-] ([xshift=0.25cm]udm.north) |- (n10) |- (smf);
+      
+      % Row 4
+      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-2.5, -1) (mme) {MME};
+      
+      \node[align=center] at (-1.5, -0.5) (n26) {N26};
+      \draw[-] (mme) -- (n26) -- (amf);
+      
       \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, -1) (upf) {UPF};
+      
+      \node[align=center] at (2.5, -1) (n9) {N9};
+      \draw[-] (n9) -- (upf);
       
       \node[align=center] at (1.5, -0.5) (n4) {N4};
       \draw[-] (smf) -- (n4) -- (upf);
       
-      % Row 3
+      % Row 5
       \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-2.5, -2) (ue) {UE};
       
-      \node[align=center] at (-1.75, -1) (n1) {N1};
-      \draw[-] ([xshift=-0.25cm]ue.north) -- (n1) -- ([xshift=-0.25cm]amf.south);
+      \node[align=center] at (-1.5, -1) (n1) {N1};
+      \draw[-] (ue) -- (n1) -- (amf);
       
       \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-0.5, -2) (ran) {(R)AN};
       
       \node[align=center] at (-0.5, -1) (n2) {N2};
       \draw[-] (amf) -- (n2) -- (ran);
+      
+      \node[align=center] at (0.5, 0.5) (n15) {N15};
+      \draw[-] (amf) -- (n15) -- (pcf);
       
       \draw[-] (ue) -- (ran);
       
@@ -2732,13 +2789,6 @@
       
       \node[align=center] at (1.5, -1.5) (n6) {N6};
       \draw[-] (upf) -- (n6) -- (dn);
-      
-      
-      % Arrows
-      
-      % \node[align=center] (CUPS) at (0.1, 0.5) {Raemis CUPS};
-      % \draw[-] (dataplane.north) -- ([xshift=-2.5mm]sgwcp.south);
-      
       
     \end{tikzpicture}
   \end{center}
@@ -2940,9 +2990,7 @@
     \vspace{0.4cm}
     \begin{tikzpicture}[
         node distance=4cm,
-        stage/.style={scale=0.75},
         every arrow/.style={thick,>=stealth},
-        data/.style={midway, above, font=\small}
       ]
       % Nodes
       \node[align=center, text width=1cm, draw, rounded corners] (master) {collectd master};
@@ -2952,14 +3000,23 @@
       
       % Carbon and Graphite
       \draw[rounded corners] (1, 1) rectangle (4.5, -2.5);
-      \node[text width=1cm] at (1.75, -2.25) (graphite) {GRAPHITE};
+      
+      \node[text width=1cm, font=\bfseries] at (1.75, -2.25) (graphite) {GRAPHITE};
+      
       \draw[rounded corners] (1.25, 0.75) rectangle (4.25, -0.5);
-      \node[align=center, text width=1cm] at (2.75, 0.5) (carbon) {CARBON};
+      
+      \node[align=center, text width=1cm, font=\bfseries] at (2.75, 0.5) (carbon) {CARBON};
+      
       \node[align=center, text width=1cm, draw, rounded corners] (carbona) at (2, 0) {carbon-aggregator.py};
+      
       \node[align=center, text width=1cm, draw, rounded corners] (carbonc) at (3.5, 0){carbon-cache.py};
+      
       \node[align=center, text width=2cm, draw, rounded corners] (whisper) at (2.75, -1){whisper database};
+      
       \node[align=center, text width=2cm, draw, rounded corners] (grafana) at (2.75, -1.75){GRAFANA};
+      
       \node[align=center, text width=2cm, draw, rounded corners] (link) at (2.75, -2.75){http://pcrfclient01/grafana};
+      
       \node[align=center, rotate=90, text width=2cm, draw, rounded corners] (elasticsearch) at (5, -1.75){Elasticsearch};
       
       % Arrows
@@ -3048,7 +3105,7 @@
       
       \node[align=center, text width=1cm] at (2, -2.5) (promql) {PromQL};
       
-      \node[below left = 0.25cm and 0.25cm of promql, align=center, text width=1cm, draw, rounded corners](webui) {Prometheus Web UI};
+      \node[below left = 0.25cm and 0.25cm of promql, align=center, text width=2cm, draw, rounded corners](webui) {Prometheus Web UI};
       
       \node[below = 0.25cm of webui, align=center, text width=1cm, draw, rounded corners](grafana) {Grafana};
       
@@ -3056,7 +3113,7 @@
       
       \node[above = 0.05cm of alertmanager, font=\bfseries, align=center, text width=1.25cm] {Prometheus Alerting};
       
-      \node[below = 1.25cm of promql, font=\bfseries, align=center, text width=2.25cm] {Data Visualization\\and Export};
+      \node[font=\bfseries, align=center, text width=2.25cm] (datavisualization) at (1.25, -2) {Data Visualization\\and Export};
       
       % Arrows
       \draw[->] (retrieval) -- (tsdb);
@@ -3080,9 +3137,9 @@
       
       \draw[->] (promql.north) -- ([xshift=2cm] prometheusserver.south);
       
-      \draw[-] (webui.east) -- (promql.south);
-      \draw[-] (grafana.east) -- (promql.south);
-      \draw[-] (api.east) -- (promql.south);
+      \draw[-] (webui.east) -| ([xshift=-0.25cm] promql.south);
+      \draw[-] (grafana.east) -| (promql.south);
+      \draw[-] (api.east) -| ([xshift=0.25cm]promql.south);
       
     \end{tikzpicture}
     
