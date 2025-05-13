@@ -334,6 +334,8 @@
   
   \definition{IEEE}{Institute of Electrical and Electronics Engineers}
   
+  \definition{IETF}{Internet Engineering Task Force}
+  
   \definition{ITU}{International Telecommunications Union}
   
   \subsection{Files}
@@ -378,7 +380,17 @@
     
     \definition{AMF}{Access and Mobility Management Function}
     
+    \definition{AN}{Access Network}
+    
+    \definition{CHF}{Charging Function}
+    
+    \definition{CUPS}{Control and User Plane Separation}
+    
+    \definition{DCS}{Data Communication System}
+    
     \definition{DN}{Data Network}
+    
+    \definition{EIR}{Equipment Identity Register}
     
     \definition{G}{Generation (Used in Cellular)}
     
@@ -405,6 +417,12 @@
     \definition{PAN}{Personal Area Network (Vicinity)}
     
     \definition{PDN}{Packet Data Networks}
+    
+    \definition{RAN}{Radio Access Network}
+    
+    \definition{SMF}{Session Management Function}
+    
+    \definition{SMSF}{Short Message Service Function}
     
     \definition{UE}{User Equipment}
     
@@ -450,7 +468,11 @@
     
     \definition{IPsec}{Internet Protocol Security}
     
+    \definition{LDAP}{Lightweight Directory Access Protocol}
+    
     \definition{MRP}{Media Redundancy Protocol}
+    
+    \definition{NETCONF}{Network Configuration Protocol}
     
     \definition{NTP}{Network Time Protocol}
     
@@ -2656,26 +2678,35 @@
   \subsection{5G}
   
   \begin{center}
-    \begin{tabular}{| m{1cm} | m{1cm} | m{6cm} |}
+    \begin{tabular}{| m{0.5cm} | m{1.5cm} | m{6cm} |}
       \hline
-      \textbf{N1}  & \textbf{UE} \& \textbf{AMF}    & Handles registration, authentication, and mobility management procedures. \\
+      \textbf{N1}  & \textbf{UE} \& \textbf{AMF}      & Handles registration, authentication, and mobility management procedures.                   \\
       \hline
-      \textbf{N2}  & \textbf{(R)AN} \& \textbf{AMF} & Carries signaling and data between the \textbf{RAN} and the core network. \\
+      \textbf{N2}  & \textbf{(R)AN} \& \textbf{AMF}   & Carries signaling and data between the \textbf{RAN} and the core network.                   \\
       \hline
-      \textbf{N3}  & \textbf{(R)AN} \& \textbf{UPF} & Facilitates transfer of user data between \textbf{RAN} and core network.  \\
+      \textbf{N3}  & \textbf{(R)AN} \& \textbf{UPF}   & Facilitates transfer of user data between \textbf{RAN} and core network.                    \\
       \hline
-      \textbf{N4}  & \textbf{SMF} \& \textbf{UPF}   & Responsible for session management and data flow control.                 \\
+      \textbf{N4}  & \textbf{SMF} \& \textbf{UPF}     & Responsible for session management and data flow control.                                   \\
       \hline
-      \textbf{N5}  & \textbf{PCF} \& \textbf{AF}    & Handles policy enforcement and authentication.                            \\
+      \textbf{N5}  & \textbf{PCF} \& \textbf{AF}      & Handles policy enforcement and authentication.                                              \\
       \hline
-      \textbf{N6}  & \textbf{UPF} \& \textbf{DN}    & Responsible for transferring user data to and from external networks.     \\
+      \textbf{N6}  & \textbf{UPF} \& \textbf{DN}      & Responsible for transferring user data to and from external networks.                       \\
       \hline
-      \textbf{N7}  & \textbf{PCF} \& \textbf{SMF}   & Triggers session management policies.                                     \\
+      \textbf{N7}  & \textbf{PCF} \& \textbf{SMF}     & Triggers session management policies.                                                       \\
       \hline
-      \textbf{N26} & \textbf{MME} \& \textbf{AMF}   & Crucial for facilitating communication between 4G/LTE EPC and 5GS         \\
+      \textbf{N16} & \textbf{V-SMF} \& \textbf{H-SMF} & Connects Visited SMF that exists in the PLMN and the Home SMF that exists in the Home PLMN. \\
+      \hline
+      \textbf{N26} & \textbf{MME} \& \textbf{AMF}     & Crucial for facilitating communication between 4G/LTE EPC and 5GS                           \\
       \hline
     \end{tabular}
   \end{center}
+  
+  \subsubsection{5GC}
+  
+  \begin{itemize}
+    \item Refers to the network's core
+    \item Responsible for managing and interconnecting other parts of the network
+  \end{itemize}
   
   \begin{center}
     \vspace{0.4cm}
@@ -2689,109 +2720,187 @@
       % Nodes
       
       % Row 1
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-2.5, 2) (nef) {NEF};
       
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-1.5, 2) (nrf) {NRF};
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (0, 3) (nssf) {NSSF};
       
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-0.5, 2) (udm) {UDM};
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (2, 3) (nwdaf) {NWDAF};
       
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, 2) (af) {AF};
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (3, 3) (udr) {UDR};
+      
+      \node[align=center, text width=0.75cm, draw, minimum width=0.6cm, font=\bfseries] at (4, 3) (chf) {CHF};
       
       % Row 2
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-2.5, 1) (nssf) {NSSF};
       
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-1.5, 1) (smsf) {SMSF};
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (-2, 2) (udm) {UDM};
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (1, 2) (af) {AF};
       
-      \node[align=center] at (-1, 1.5) (n21) {N21};
-      \draw[-] (udm) -- (n21) -- (smsf);
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, minimum height=0.6cm, font=\bfseries] at (3, 2) (pcf) {PCF};
       
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (0.5, 1) (nssaaf) {NSSAAF};
-      
-      \node[align=center] at (0, 1.5) (n59) {N59};
-      \draw[-] (udm) -- (n59) -- (nssaaf);
-      
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, 1) (pcf) {PCF};
-      
-      \node[align=center] at (1.5, 1.5) (n5) {N5};
-      \draw[-] (af) -- (n5) -- (pcf);
       
       % Row 3
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-2.5, 0) (ausf) {AUSF};
       
-      \node[align=center] at (-3.5, 2.5) (n13) {N13};
-      \draw[-] (ausf) -| (n13) -| ([xshift=-0.25cm]udm.north);
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (-2, 1) (nssaaf) {NSSAAF};
       
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-0.5, 0) (amf) {AMF};
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (-1, 1) (smsf) {SMSF};
       
-      \node[align=center] at (0, -0.5) (n14) {N14};
-      \draw[-] (amf) -- (n14);
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (1, 1) (ucmf) {UCMF};
       
-      \node[align=center] at (-1.5, 0.5) (n22) {N22};
-      \draw[-] (nssf) -- (n22) -- (amf);
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (2, 1) (nef) {NEF};
       
-      \node[align=center] at (-1, 0.5) (n20) {N20};
-      \draw[-] (smsf) -- (n20) -- (amf);
-      
-      \node[align=center] at (-0.5, 1) (n8) {N8};
-      \draw[-] (udm) -- (n8) -- (amf);
-      
-      \node[align=center] at (-1.5, 0) (n12) {N12};
-      \draw[-] (ausf) -- (n12) -- (amf);
-      
-      \node[align=center] at (0, 0.5) (n58) {N58};
-      \draw[-] (amf) -- (n58) -- (nssaaf);
-      
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, 0) (smf) {SMF};
-      
-      \node[align=center] at (1.5, 0.5) (n7) {N7};
-      \draw[-] (smf) -- (n7) -- (pcf);
-      
-      \node[align=center] at (0.5, 0) (n11) {N11};
-      \draw[-] (amf) -- (n11) -- (smf);
-      
-      \node[align=center] at (2.5, 2.5) (n10) {N10};
-      \draw[-] ([xshift=0.25cm]udm.north) |- (n10) |- (smf);
       
       % Row 4
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-2.5, -1) (mme) {MME};
       
-      \node[align=center] at (-1.5, -0.5) (n26) {N26};
-      \draw[-] (mme) -- (n26) -- (amf);
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (-2, 0) (ausf) {AUSF};
       
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, -1) (upf) {UPF};
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, minimum height=0.6cm, font=\bfseries] at (0, 0) (amf) {AMF};
       
-      \node[align=center] at (2.5, -1) (n9) {N9};
-      \draw[-] (n9) -- (upf);
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, minimum height=0.6cm, font=\bfseries] at (4, 0) (smf) {SMF};
       
-      \node[align=center] at (1.5, -0.5) (n4) {N4};
-      \draw[-] (smf) -- (n4) -- (upf);
       
       % Row 5
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-2.5, -2) (ue) {UE};
       
-      \node[align=center] at (-1.5, -1) (n1) {N1};
-      \draw[-] (ue) -- (n1) -- (amf);
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (-2, -1) (mme) {MME};
       
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (-0.5, -2) (ran) {(R)AN};
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (2, -1) (cbcf) {CBCF};
       
-      \node[align=center] at (-0.5, -1) (n2) {N2};
-      \draw[-] (amf) -- (n2) -- (ran);
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (3, -1) (upf) {UPF};
       
-      \node[align=center] at (0.5, 0.5) (n15) {N15};
-      \draw[-] (amf) -- (n15) -- (pcf);
+      
+      % Row 6
+      
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (-2, -2) (ue) {UE};
+      
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (0, -2) (ran) {(R)AN};
+      
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (1, -2) (eir) {EIR};
+      
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (2, -2) (dn) {DN};
+      
+      \node[align=center, text width=0.6cm, draw, minimum width=0.6cm, font=\bfseries] at (3, -2) (nrf) {NRF};
+      
+      % Arrows
       
       \draw[-] (ue) -- (ran);
       
-      \node[align=center, text width=0.75cm, draw, rounded corners, minimum width=0.75cm, font=\bfseries] at (1.5, -2) (dn) {DN};
+      % Interfaces
       
-      \node[align=center] at (0.5, -1.5) (n3) {N3};
-      \draw[-] (upf) -- (n3) -- (ran);
+      \node[align=center] at (-1, -1) (n1) {N1};
+      \draw[-] (ue) -- (n1) -- (amf);
       
-      \node[align=center] at (1.5, -1.5) (n6) {N6};
+      \node[align=center] at (0, -1) (n2) {N2};
+      \draw[-] (amf) -- (n2) -- (ran);
+      
+      \node[align=center] at (4.5, -2.5) (n3) {N3};
+      \draw[-] (upf) -| (n3) -| (ran);
+      
+      \node[align=center] at (3.5, -0.5) (n4) {N4};
+      \draw[-] (smf) -- (n4) -- (upf);
+      
+      \node[align=center] at (2, 2) (n5) {N5};
+      \draw[-] (af) -- (n5) -- (pcf);
+      
+      \node[align=center] at (2.5, -1.5) (n6) {N6};
       \draw[-] (upf) -- (n6) -- (dn);
+      
+      \node[align=center] at (4, 2.05) (n7) {N7};
+      \draw[-] (smf) -- (n7) -- ([yshift=0.05cm]pcf.east);
+      
+      \node[align=center] at (-0.1, 2) (n8) {N8};
+      \draw[-] (udm) -- (n8) -- ([xshift=-0.1cm]amf.north);
+      
+      \node[align=center] at (3, -1.5) (n9) {N9};
+      \draw[-] (n9) -- (upf);
+      
+      \node[align=center] at (4.5, 3.5) (n10) {N10};
+      \draw[-] ([xshift=0.25cm]udm.north) |- (n10) |- ([yshift=-0.05cm]smf.east);
+      
+      \node[align=center] at (2, -0.15) (n11) {N11};
+      \draw[-] ([yshift=-0.15cm]amf.east) -- (n11) -- ([yshift=-0.15cm]smf.west);
+      
+      \node[align=center] at (-1, 0) (n12) {N12};
+      \draw[-] (ausf) -- (n12) -- (amf);
+      
+      \node[align=center] at (-3, 3.5) (n13) {N13};
+      \draw[-] (ausf) -| (n13) -| ([xshift=-0.25cm]udm.north);
+      
+      \node[align=center] at (-0.5, -1) (n14) {N14};
+      \draw[-] (amf) -- (n14);
+      
+      \node[align=center] at (3, 0.0) (n15) {N15};
+      \draw[-] ([yshift=0.00cm]amf.east) -- (n15) -- (pcf);
+      
+      \node[align=center] at (3, -0.5) (n16) {N16};
+      \draw[-] (smf) -- (n16);
+      
+      \node[align=center] at (0.5, -1) (n17) {N17};
+      \draw[-] (eir) -- (n17) -- (amf);
+      
+      \node[align=center] at (-0.5, 0.5) (n20) {N20};
+      \draw[-] (smsf) -- (n20) -- (amf);
+      
+      \node[align=center] at (-1.5, 1.5) (n21) {N21};
+      \draw[-] (udm) -- (n21) -- (smsf);
+      
+      \node[align=center] at (0.1, 1) (n22) {N22};
+      \draw[-] ([xshift=0.1cm]nssf.south) -- (n22) -- ([xshift=0.1cm]amf.north);
+      
+      \node[align=center] at (2.5, 2.5) (n23) {N23};
+      \draw[-] (nwdaf) -- (n23) -- (pcf);
+      
+      \node[align=center] at (-1, -0.5) (n26) {N26};
+      \draw[-] (mme) -- (n26) -- (amf);
+      
+      \node[align=center] at (4, -2) (n27) {N27};
+      \draw[-] (nrf) -- (n27);
+      
+      \node[align=center] at (3.5, 2.5) (n28) {N28};
+      \draw[-] (chf) -- (n28) -- (pcf);
+      
+      \node[align=center] at (2.5, 1.5) (n30) {N30};
+      \draw[-] (nef) -- (n30) -- (pcf);
+      
+      \node[align=center] at (1.5, 1.5) (n33) {N33};
+      \draw[-] (af) -- (n33) -- (nef);
+      
+      \node[align=center] at (1, 3) (n34) {N34};
+      \draw[-] (nssf) -- (n34) -- (nwdaf);
+      
+      \node[align=center] at (3, 2.5) (n36) {N36};
+      \draw[-] (udr) -- (n36) -- (pcf);
+      
+      \node[align=center] at (4.25, 1.5) (n40) {N40};
+      \draw[-] ([xshift=0.25cm]smf.north) -- (n40) -- ([xshift=0.25cm]chf.south);
+      
+      \node[align=center] at (1, -0.5) (n50) {N50};
+      \draw[-] (amf) -- (n50) -- (cbcf);
+      
+      \node[align=center] at (2, 0.15) (n51) {N51};
+      \draw[-] (nef) -- (n51) -- ([yshift=0.15cm]amf.east);
+      
+      \node[align=center] at (0.5, 0.5) (n55) {N55};
+      \draw[-] (amf) -- (n55) -- (ucmf);
+      
+      \node[align=center] at (1.5, 0.5) (n56) {N56};
+      \draw[-] (nef) -- (n56) -- (ucmf);
+      
+      \node[align=center] at (1, 1.5) (n57) {N57};
+      \draw[-] (af) -- (n57) -- (ucmf);
+      
+      \node[align=center] at (-1, 0.5) (n58) {N58};
+      \draw[-] (amf) -- (n58) -- (nssaaf);
+      
+      \node[align=center] at (-2, 1.5) (n59) {N59};
+      \draw[-] (udm) -- (n59) -- (nssaaf);
       
     \end{tikzpicture}
   \end{center}
+  
+  \section{NETCONF Protocol Stack}
+  
+  \begin{itemize}
+    \item Provides a secure wat to manage and configure network devices such as routers and switches
+    \item Standardized by the \textbf{IETF}
+  \end{itemize}
   
   \section{Applications \& Tech}
   
@@ -3159,6 +3268,12 @@
     \item Uses \textbf{SMB} instead of \textbf{QUIC}
     \item Compared to Windows, this is used for network servers, whereas base Windows 11 is used for desktop computers and personal use
     \item New features such as Bluetooth connection, DTrace, and additional emails and accounts
+  \end{itemize}
+  
+  \section{DCS}
+  
+  \begin{itemize}
+    \item 
   \end{itemize}
   
 \end{multicols*}
